@@ -12,11 +12,6 @@
             margin: 10px;
         }
 
-        #Post {
-            float: left;
-            width: 30%;
-            margin-right: 10%;
-        }
 
         #text {
             margin-left: 20%;
@@ -26,29 +21,30 @@
 
         }
 
+        #container {
+            float: left;
+        }
+
         #content-box {
             float: left;
-            width: 30%;
+            width: 45%;
         }
 
         img {
 
-            width: 40%;
+            width: auto;
         }
-
-        #Plot,
-        #Actors {}
     </style>
 </head>
 
 <body>
 
     <div class="container">
-        <h1>Movie Search</h1>
+        <h1>Topic Search</h1>
 
         <div id="buttons-view"></div>
 
-        <form id="movie-form">
+        <form id="topic-form">
             <label for="topic-input">Add a Topic</label>
             <input type="text" id="topic-input">
             <br>
@@ -56,6 +52,7 @@
 
             <input id="add-topic" type="submit" value="Add a topic">
         </form>
+
         <br>
         <div id="content">
 
@@ -106,13 +103,12 @@
 
                     for (var i = 0; i < 10; i++) {
                         var img = $('<img>');
-                        var rate = $('<span>');
-                        var box = $('<div class=content-box>');
-                        //var box = $('<div class=content-box>');
+                        var rate = $('<p>');
+                        var box = $('<div id=content-box>').append(img, rate.text('Rating: ' + response.data[i].rating));
+
                         img.addClass('playing');
                         img.attr('src', response.data[i].images.fixed_height.url);
-                        $('#content').append(img, rate.text('Rating: ' + response.data[i].rating));;
-                        // $('#content-box').append(img, rate.text('Rating: ' + response.data[i].rating));
+                        $('#content').append(box);
 
 
                     }
